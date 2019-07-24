@@ -56,7 +56,10 @@ class InteractiveRecord
     attribute_key = attribute.keys.join()
     attribute_value = attribute.values.first
     sql = <<-SQL
-      SELECT * FROM #{self.table_name} WHERE #{attribute_key} = #{attribute_value} LIMIT 1"
-      DB[:conn].execute(sql)
+      SELECT * FROM #{self.table_name} 
+      WHERE #{attribute_key} = #{attribute_value} LIMIT 1
+      SQL
+      
+      row = DB[:conn].execute(sql)
   end
 end
